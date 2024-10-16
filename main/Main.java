@@ -1,14 +1,13 @@
 package main;
 
-import view.LoginFrame;
-import view.MemberFrame;
+import view.HealthCheckFrame;
+import view.LogFrame;
+import view.MainFrame;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		MemberFrame b = new MemberFrame();
-//		LoginFrame a =new LoginFrame();
+		new MainFrame();
 	}
 
 }

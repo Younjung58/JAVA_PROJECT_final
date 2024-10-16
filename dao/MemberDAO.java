@@ -4,8 +4,21 @@ import java.util.ArrayList;
 
 import dto.HealthDTO;
 
-public class MemberDAO implements DBdao{
-
+public class memberDAO implements DBdao{
+	
+	public static memberDAO memberdao = null;
+	
+	private memberDAO(){
+		
+	}
+	public static memberDAO getInstance() {
+		if(memberdao == null) {
+			memberdao = new memberDAO();
+		}
+		return memberdao;
+	}
+	
+	
 	@Override
 	public void add() {
 		// TODO Auto-generated method stub
@@ -19,15 +32,19 @@ public class MemberDAO implements DBdao{
 	}
 
 	@Override
-	public ArrayList<HealthDTO> select() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void del() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public HealthDTO selectone() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<HealthDTO> selectall() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

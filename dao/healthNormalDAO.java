@@ -19,15 +19,21 @@ public class healthNormalDAO implements DBdao{
 	}
 
 	@Override
-	public ArrayList<HealthDTO> select() {
+	public void del() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public HealthDTO selectone() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void del() {
+	public ArrayList<HealthDTO> selectall() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }

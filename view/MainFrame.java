@@ -1,10 +1,14 @@
 package view;
 
+import static view.Frame_.font;
+import static view.Frame_.title;
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,8 +17,11 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LoginFrame extends JFrame implements Frame_ {
+import dao.memberDAO;
+
+public class MainFrame extends JFrame implements Frame_, ActionListener {
 										// 고정된 값이 머리글, 바닥글을 구현받음
+	memberDAO memberdao = memberDAO.getInstance();
 	
 	private JPanel center_p = new JPanel(); // 메인 center
 	private JPanel center_p0 = new JPanel();  // 제일 위칸
@@ -27,19 +34,17 @@ public class LoginFrame extends JFrame implements Frame_ {
 	private JLabel c1 = new JLabel("아이디",JLabel.CENTER);
 	private JLabel c2 = new JLabel("비밀번호",JLabel.CENTER);
 	private JTextField ct1 = new JTextField();
-//	private JTextField ct2 = new JTextField();
 	private JPasswordField pw = new JPasswordField();
 	
 	private JButton cb1 = new JButton("회원가입");
 	private JButton cb2 = new JButton("로그인");
 	
-	
+	 
 	Container con = this.getContentPane();
 	
-	
-	
-	public LoginFrame() {
-		this.setBounds(100, 100, 400, 250);
+	public MainFrame() {
+		this.setBounds(200, 100, 400, 250);
+		setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		
@@ -80,11 +85,34 @@ public class LoginFrame extends JFrame implements Frame_ {
 		cb1.setPreferredSize(new Dimension(100,25));
 		cb2.setPreferredSize(new Dimension(80,25));
 		center_p3.add(cb1);
-		
 		center_p3.add(cb2);
 		center_p.add(center_p3);
 		// 최종 Center구역으로 추가
 		this.add(center_p,"Center");
+		revalidate();
+	    repaint();
 		
+	    cb1.addActionListener(this);
+	    cb2.addActionListener(this);
+	    
+//		MemberFrame b = new MemberFrame();
+		
+	}
+
+	// 회원가입 버튼 - cb1 , 로그인 버튼 - cb2
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==cb1) {
+			System.out.println("회원가입 버튼 눌림");
+			new MemberFrame();
+			setVisible(false);
+		}
+		if(e.getSource()==cb2) {
+			System.out.println("로그인 버튼 눌림");
+			setVisible(false);
+			LogFrame log = new LogFrame(memberdao);
+		}
 	}
 }
