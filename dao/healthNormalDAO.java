@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import dto.HealthDTO;
 
-public class healthNormalDAO{
+public class healthNormalDAO extends oracleload{
 
 
 }

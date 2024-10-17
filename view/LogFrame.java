@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import dao.memberDAO;
+import dto.MemberDTO;
 
 public class LogFrame extends JFrame implements Frame_,ActionListener{
 	
@@ -24,9 +24,11 @@ public class LogFrame extends JFrame implements Frame_,ActionListener{
 	private JButton sel1, sel2, sel3, sel4, sel5;
 	
 	Container con = this.getContentPane(); 
-	
+	MemberDTO memberdto = null;
 
-	public LogFrame(memberDAO memberdao) {
+	public LogFrame(MemberDTO memberdto) {
+		this.memberdto = memberdto;
+		
 		// 머릿글 제목 추가
 		title.setForeground(Color.white);
 		title.setFont(font);
@@ -44,7 +46,7 @@ public class LogFrame extends JFrame implements Frame_,ActionListener{
 		
 		// 중간 내용 추가
 		JPanel p = new JPanel();
-		titlesub1 = new JLabel("회원아이디" + " 님 어서오세요 !!");
+		titlesub1 = new JLabel(memberdto.getId() + " 님 어서오세요 !!");
 		titlesub1.setFont(font2);
 		p.add(titlesub1);
 		JPanel p1 = new JPanel(new GridLayout(1,2,5,0));
@@ -78,6 +80,7 @@ public class LogFrame extends JFrame implements Frame_,ActionListener{
 		p.add(p1);
 		
 		this.add(p);
+		this.setBounds(300,300,0,0);
 		setSize(500,370);
 //		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -95,7 +98,7 @@ public class LogFrame extends JFrame implements Frame_,ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == sel1) {
 			setVisible(false);
-			HealthCheckFrame h = new HealthCheckFrame();
+			HealthCheckFrame h = new HealthCheckFrame(memberdto);
 		}
 		if(e.getSource() == sel5) {
 			setVisible(false);

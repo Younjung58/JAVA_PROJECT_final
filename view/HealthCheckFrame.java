@@ -11,18 +11,24 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import dto.MemberDTO;
+
 public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
-	private JLabel title_sub,heightl,weightl,ACl,BP,SBPl,DBPl,BG,FBGl,
+	
+	MemberDTO memberdto = null;
+	
+	private JLabel title_s,title_sub,heightl,weightl,ACl,BP,SBPl,DBPl,BG,FBGl,
 					C,TCl,HDLl,TGl,LDLl,A,ASTl,ALTl,cfl;
 	private JTextField height,weight,AC,SBP,DBP,FBP,TC,HDL,TG,LDL,
 						AST,ALT;
 	
-	private Button btnSubmit,btnCancel;
+	private JButton btnSubmit,btnCancel;
 	
 	
 	
@@ -30,7 +36,10 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 	
 	Container con = this.getContentPane(); 
 	
-	public HealthCheckFrame() {
+	
+	
+	public HealthCheckFrame(MemberDTO memberdto) {
+		this.memberdto = memberdto;
 		// 머릿글 제목 추가
 		title.setForeground(Color.white);
 		title.setFont(font);
@@ -49,7 +58,8 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		// 내용 생성
 		JPanel p = new JPanel();
 		p.setLayout(null);
-		title_sub = new JLabel("< 검진 결과 등록하기 >");
+		title_s = new JLabel("< 검진 결과 등록하기 >");
+		title_sub = new JLabel(" - " +memberdto.getId()+" 님 ( "+memberdto.getGender()+" )");
 		heightl = new JLabel("키(cm)");
 		weightl = new JLabel("몸무게(kg)");
 		ACl = new JLabel("복부둘레(cm)");
@@ -68,8 +78,10 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		ALTl = new JLabel("ALT");
 		cfl = new JLabel("상태 (Y / N)    -    검진전 몸상태 이상의 증상을 느꼈나요 ? ");
 		
-		title_sub.setBounds(20,15,300,20);
-		title_sub.setFont(font2);
+		title_s.setBounds(20,15,300,20);
+		title_s.setFont(font2);
+		title_sub.setBounds(300,15,100,20);
+		title_sub.setFont(font4);
 		heightl.setBounds(20,70,100,20);
 		heightl.setFont(font3);
 		weightl.setBounds(170,70,100,20);
@@ -104,6 +116,7 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		ALTl.setFont(font3);
 		cfl.setBounds(20,310,370,20);
 		cfl.setFont(font3);
+		p.add(title_s);
 		p.add(title_sub);
 		p.add(heightl);
 		p.add(weightl);
@@ -170,19 +183,20 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		
 		p.add(chA);
 		
-		btnCancel = new Button("취소");
-		btnCancel.setBounds(300,360,80,40);
+		btnCancel = new JButton("취소");
+		btnCancel.setBounds(300,360,60,30);
 		p.add(btnCancel);
-		btnSubmit = new Button("결과등록");
-		btnSubmit.setBounds(400,360,80,40);
+		btnSubmit = new JButton("결과등록");
+		btnSubmit.setBounds(380,360,100,30);
 		p.add(btnSubmit);
 		
 		this.add(p);
 		
+		this.setBounds(300,300,0,0);
 		btnCancel.addActionListener(this);
 		btnSubmit.addActionListener(this);
 		
-		setSize(520,530);
+		setSize(520,500);
 //		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setVisible(true);
@@ -196,7 +210,7 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		if(e.getSource() == btnCancel) {
 			System.out.println("취소버튼 눌림");
 			setVisible(false);
-			new LogFrame(memberdao);
+			new LogFrame(memberdto);
 		}
 	}
 }

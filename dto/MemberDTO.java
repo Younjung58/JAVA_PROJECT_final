@@ -2,7 +2,7 @@ package dto;
 
 public class MemberDTO {
 	private String name;
-	private int birth;
+	private String birth;
 	private String gender;
 	private String id;
 	private String pw;
@@ -13,10 +13,10 @@ public class MemberDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(int birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public String getGender() {

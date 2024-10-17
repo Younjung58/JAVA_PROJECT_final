@@ -13,15 +13,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import dao.DBdao_member;
 import dao.memberDAO;
+import dto.MemberDTO;
 
 public class MainFrame extends JFrame implements Frame_, ActionListener {
 										// 고정된 값이 머리글, 바닥글을 구현받음
-	memberDAO memberdao = memberDAO.getInstance();
 	
 	private JPanel center_p = new JPanel(); // 메인 center
 	private JPanel center_p0 = new JPanel();  // 제일 위칸
@@ -43,7 +45,7 @@ public class MainFrame extends JFrame implements Frame_, ActionListener {
 	Container con = this.getContentPane();
 	
 	public MainFrame() {
-		this.setBounds(200, 100, 400, 250);
+		this.setBounds(300, 300, 400, 250);
 		setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -76,7 +78,7 @@ public class MainFrame extends JFrame implements Frame_, ActionListener {
 		center_p1s.add(center_p01);	//	공백
 		center_p2.add(c2);		// 비밀번호 
 		center_p1s.add(center_p2);	// 공백
-		center_p1s.add(pw);	//	 비밀번호 입력 - ct2
+		center_p1s.add(pw);	//	 비밀번호 입력 - pw
 		center_p1s.add(center_p02);
 		center_p.add(center_p1s);
 		// 버튼 작업 - center_p 아래칸
@@ -100,19 +102,38 @@ public class MainFrame extends JFrame implements Frame_, ActionListener {
 	}
 
 	// 회원가입 버튼 - cb1 , 로그인 버튼 - cb2
+	// 아이디 = ct1 / 비밀번호 - pw
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==cb1) {
 			System.out.println("회원가입 버튼 눌림");
-			new MemberFrame();
+			MemberFrame m = new MemberFrame();
+//			m.tempMember(m);
 			setVisible(false);
 		}
 		if(e.getSource()==cb2) {
 			System.out.println("로그인 버튼 눌림");
-			setVisible(false);
-			LogFrame log = new LogFrame(memberdao);
+			MemberDTO tempdto = new MemberDTO();
+			tempdto = memberdao.selectone(ct1.getText());
+			String pwt = "";
+			char [] pwc = pw.getPassword();
+			for (char pwcha : pwc) {
+				Character.toString(pwcha);
+				// pwcha에 저장된 값을 string의 자료형으로 변환
+				pwt+=pwcha;
+			}
+			if(tempdto.getPw().equals(pwt)) {
+				System.out.println("로그인 성공");
+				setVisible(false);
+				LogFrame log = new LogFrame(tempdto);
+				JOptionPane.showMessageDialog(null, "로그인 되었습니다.","어서오세요!",JOptionPane.PLAIN_MESSAGE);
+			}else {
+				System.out.println(pwt+"--입력값");
+				System.out.println(tempdto.getPw());
+				JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.","비밀번호 확인",JOptionPane.WARNING_MESSAGE);
+			}
 		}
 	}
 }
