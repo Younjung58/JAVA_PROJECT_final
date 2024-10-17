@@ -8,7 +8,7 @@ import view.MemberFrame;
 public interface DBdao_member {
 	public void add(MemberDTO memeberdto);
 	public ArrayList<MemberDTO> selectAll();
-	public MemberDTO selectone(String id);
+	public MemberDTO selectOne(String id);
 	public void update(String pw, String id);
 	public void delete(String id);
 }

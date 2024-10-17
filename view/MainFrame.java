@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,8 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import dao.DBdao_member;
-import dao.memberDAO;
 import dto.MemberDTO;
 
 public class MainFrame extends JFrame implements Frame_, ActionListener {
@@ -116,24 +115,33 @@ public class MainFrame extends JFrame implements Frame_, ActionListener {
 		if(e.getSource()==cb2) {
 			System.out.println("로그인 버튼 눌림");
 			MemberDTO tempdto = new MemberDTO();
-			tempdto = memberdao.selectone(ct1.getText());
-			String pwt = "";
-			char [] pwc = pw.getPassword();
-			for (char pwcha : pwc) {
-				Character.toString(pwcha);
-				// pwcha에 저장된 값을 string의 자료형으로 변환
-				pwt+=pwcha;
+			ArrayList<MemberDTO> mlist = memberdao.selectAll();
+			for(MemberDTO m : mlist) {
+				if(m.getId().equals(ct1.getText())) {
+					tempdto = memberdao.selectOne(ct1.getText());
+					String pwt = "";
+					char [] pwc = pw.getPassword();
+					for (char pwcha : pwc) {
+						Character.toString(pwcha);
+						// pwcha에 저장된 값을 string의 자료형으로 변환
+						pwt+=pwcha;
+					}
+					if(tempdto.getPw().equals(pwt)) {
+						System.out.println("로그인 성공");
+						setVisible(false);
+						LogFrame log = new LogFrame(tempdto);
+						JOptionPane.showMessageDialog(null, "로그인 되었습니다.","어서오세요!",JOptionPane.PLAIN_MESSAGE);
+					}else {
+						System.out.println(pwt+"--입력값");
+						System.out.println(tempdto.getPw());
+						JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.","비밀번호 확인",JOptionPane.WARNING_MESSAGE);
+					}					
+					break;
+				}else {
+					JOptionPane.showMessageDialog(null, "아이디가 존재하지않습니다.","아이디 확인",JOptionPane.WARNING_MESSAGE);
+				}
 			}
-			if(tempdto.getPw().equals(pwt)) {
-				System.out.println("로그인 성공");
-				setVisible(false);
-				LogFrame log = new LogFrame(tempdto);
-				JOptionPane.showMessageDialog(null, "로그인 되었습니다.","어서오세요!",JOptionPane.PLAIN_MESSAGE);
-			}else {
-				System.out.println(pwt+"--입력값");
-				System.out.println(tempdto.getPw());
-				JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.","비밀번호 확인",JOptionPane.WARNING_MESSAGE);
-			}
+			
 		}
 	}
 }

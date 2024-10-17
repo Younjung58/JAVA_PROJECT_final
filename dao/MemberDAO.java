@@ -162,7 +162,7 @@ public class memberDAO extends oracleload implements DBdao_member{
 		}
 	}
 	@Override
-	public MemberDTO selectone(String id) {
+	public MemberDTO selectOne(String id) {
 		MemberDTO tempdto = new MemberDTO();
 		if(conn()) {
 			try {

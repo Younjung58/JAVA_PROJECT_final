@@ -6,7 +6,8 @@ import dto.HealthDTO;
 
 public interface DBdao_healthCheckup {
 	public void add(HealthDTO healthdto);
-	public ArrayList<HealthDTO> selectAll();
-	public void update(int a, String id);
-	public void delete(String id);
+	public ArrayList<HealthDTO> selectAll(String id);
+//	public void update(String a, int b, String id);
+	public void delete(String id, int no);
+	public HealthDTO selectOne(int no);
 }

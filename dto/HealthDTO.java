@@ -4,7 +4,13 @@ public class HealthDTO {
 	
 	private String id;
 	private String gender;
-	private int height, weight, AC, SBP, DBP, FBG, TC, HDL, TG, LDL, AST, ALT;
+	private int no,height, weight, AC, SBP, DBP, FBG, TC, HDL, TG, LDL, AST, ALT;
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	private String cf;
 	
 	public String getId() {
