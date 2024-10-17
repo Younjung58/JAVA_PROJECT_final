@@ -3,7 +3,6 @@ package view;
 import static view.Frame_.font;
 import static view.Frame_.title;
 
-import java.awt.Button;
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Container;
@@ -23,7 +22,7 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 	
 	MemberDTO memberdto = null;
 	
-	private JLabel title_s,title_sub,heightl,weightl,ACl,BP,SBPl,DBPl,BG,FBGl,
+	private JLabel title_s,title_sub1,title_sub2, heightl,weightl,ACl,BP,SBPl,DBPl,BG,FBGl,
 					C,TCl,HDLl,TGl,LDLl,A,ASTl,ALTl,cfl;
 	private JTextField height,weight,AC,SBP,DBP,FBP,TC,HDL,TG,LDL,
 						AST,ALT;
@@ -59,7 +58,8 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		JPanel p = new JPanel();
 		p.setLayout(null);
 		title_s = new JLabel("< 검진 결과 등록하기 >");
-		title_sub = new JLabel(" - " +memberdto.getId()+" 님 ( "+memberdto.getGender()+" )");
+		title_sub1 = new JLabel(" ' " +memberdto.getId()+" 님 ( "+memberdto.getGender()+" ) '");
+		title_sub2 = new JLabel("--- 입력하지 않은 칸은 기본 정상값으로 등록됩니다 ---");
 		heightl = new JLabel("키(cm)");
 		weightl = new JLabel("몸무게(kg)");
 		ACl = new JLabel("복부둘레(cm)");
@@ -80,8 +80,11 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		
 		title_s.setBounds(20,15,300,20);
 		title_s.setFont(font2);
-		title_sub.setBounds(300,15,100,20);
-		title_sub.setFont(font4);
+		title_sub1.setBounds(300,15,150,20);
+		title_sub1.setFont(font4);
+		title_sub1.setForeground(Color.DARK_GRAY);
+		title_sub2.setBounds(80, 40, 300, 20);
+		title_sub2.setForeground(Color.red);
 		heightl.setBounds(20,70,100,20);
 		heightl.setFont(font3);
 		weightl.setBounds(170,70,100,20);
@@ -117,7 +120,8 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		cfl.setBounds(20,310,370,20);
 		cfl.setFont(font3);
 		p.add(title_s);
-		p.add(title_sub);
+		p.add(title_sub1);
+		p.add(title_sub2);
 		p.add(heightl);
 		p.add(weightl);
 		p.add(ACl);

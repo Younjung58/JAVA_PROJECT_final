@@ -15,7 +15,7 @@ public interface Frame_ {
 	Font font = new Font("Helvetica", Font.BOLD|Font.PLAIN, 15);
 	Font font2 = new Font("Helvetica", Font.BOLD, 18);
 	Font font3 = new Font("Helvetica", Font.BOLD, 14);
-	Font font4 = new Font("Helvetica",Font.ITALIC,16);
+	Font font4 = new Font("Helvetica",Font.ITALIC|Font.BOLD,16);
 	public JPanel title_p = new JPanel();
 	public JLabel title = new JLabel(" 나의 건강 지킴이 ");
 	public JPanel bottom_p = new JPanel();
