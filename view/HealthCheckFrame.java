@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import dto.HealthDTO;
 import dto.MemberDTO;
 
 public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
@@ -205,7 +206,8 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		setResizable(false);
 		setVisible(true);
 		
-		
+//		 height,weight,AC,SBP,DBP,FBP,TC,HDL,TG,LDL,AST,ALT;
+	
 	}
 
 	@Override
@@ -215,6 +217,25 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 			System.out.println("취소버튼 눌림");
 			setVisible(false);
 			new LogFrame(memberdto);
+		}
+		if(e.getSource() == btnSubmit) {
+			System.out.println("등록 눌림");
+			HealthDTO health = new HealthDTO();
+			health.setId(memberdto.getId());
+			health.setGender(memberdto.getGender());
+			health.setHeight(Integer.valueOf(height.getText()));
+			health.setWeight(Integer.valueOf(weight.getText()));
+			health.setAC(Integer.valueOf(AC.getText()));
+			health.setSBP(Integer.valueOf(SBP.getText()));
+			health.setDBP(Integer.valueOf(DBP.getText()));
+			health.setFBG(Integer.valueOf(FBP.getText()));
+			health.setTC(Integer.valueOf(TC.getText()));
+			health.setHDL(Integer.valueOf(HDL.getText()));
+			health.setTG(Integer.valueOf(TG.getText()));
+			health.setLDL(Integer.valueOf(LDL.getText()));
+			health.setAST(Integer.valueOf(AST.getText()));
+			health.setALT(Integer.valueOf(ALT.getText()));
+//			health.setCf(cf.getText());   // 여기 다시
 		}
 	}
 }
