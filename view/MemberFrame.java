@@ -149,7 +149,7 @@ public class MemberFrame extends JFrame implements Frame_, ActionListener, Chang
 		for (int i = 0; i < gender.length; i++) {
 			gg.add(gender[i]);
 			pGen.add(gender[i]);
-			gender[i].addActionListener(this);;
+			gender[i].addActionListener(this);
 		}
 		pGen.setBounds(120,110,100,30);
 		
@@ -258,8 +258,13 @@ public class MemberFrame extends JFrame implements Frame_, ActionListener, Chang
 				new MainFrame();
 			}else if(f==false) {
 				JOptionPane.showMessageDialog(null, "아이디 중복 체크를 진행해주세요.","아이디 체크",JOptionPane.WARNING_MESSAGE);
+				id.setBorder(warn);
 			}else{
 				JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.","비밀번호 확인",JOptionPane.WARNING_MESSAGE);
+				pw1.setBorder(warn);
+				pw1.setText(null);
+				pw2.setBorder(warn);
+				pw2.setText(null);
 //				dispose();
 //				new MemberFrame(name.getText(),id.getText());
 			}
@@ -276,8 +281,9 @@ public class MemberFrame extends JFrame implements Frame_, ActionListener, Chang
 				for(MemberDTO m : list) {
 					if(m.getId().equals(id.getText())) {
 						JOptionPane.showMessageDialog(null, "해당 아이디는 이미 존재합니다.","아이디 중복",JOptionPane.WARNING_MESSAGE);
-//					dispose();
-//					new MemberFrame(name.getText(),null);
+	//					dispose();
+	//					new MemberFrame(name.getText(),null);
+						id.setBorder(warn);
 						flag = false;
 						break;
 					}
@@ -286,6 +292,7 @@ public class MemberFrame extends JFrame implements Frame_, ActionListener, Chang
 			if(flag||list==null) {
 				JOptionPane.showMessageDialog(null, id.getText()+"는 사용 가능한 아이디입니다.","사용 가능",JOptionPane.PLAIN_MESSAGE);
 				f = true;		// 중복검사 진행 확인
+				id.setBorder(normal);;
 //				dispose();
 //				new MemberFrame(name.getText(),id.getText());
 			}

@@ -104,5 +104,8 @@ public class LogFrame extends JFrame implements Frame_,ActionListener{
 			setVisible(false);
 			MainFrame m = new MainFrame();
 		}
+		if(e.getSource() == sel2) {
+			new resultFrame(memberdto);
+		}
 	}
 }

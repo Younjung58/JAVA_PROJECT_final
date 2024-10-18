@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -30,6 +31,7 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 	
 	private JButton btnSubmit,btnCancel;
 	
+	private Choice chA;
 	
 	
 	String id;		//나중에 넘겨 받을 값임
@@ -60,9 +62,11 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		p.setLayout(null);
 		title_s = new JLabel("< 검진 결과 등록하기 >");
 		title_sub1 = new JLabel(" ' " +memberdto.getId()+" 님 ( "+memberdto.getGender()+" ) '");
-		title_sub2 = new JLabel("--- 입력하지 않은 칸은 기본 정상값으로 등록됩니다 ---");
+		title_sub2 = new JLabel("--- 입력하지 않은 칸은 기본 정상값으로 등록됩니다 (필수값: 키, 몸무게)---");
 		heightl = new JLabel("키(cm)");
+		heightl.setBorder(warn);
 		weightl = new JLabel("몸무게(kg)");
+		weightl.setBorder(warn);
 		ACl = new JLabel("복부둘레(cm)");
 		BP = new JLabel("혈압(mmHg)  :  ");
 		SBPl = new JLabel("수축기");
@@ -84,7 +88,7 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		title_sub1.setBounds(300,15,150,20);
 		title_sub1.setFont(font4);
 		title_sub1.setForeground(Color.DARK_GRAY);
-		title_sub2.setBounds(80, 40, 300, 20);
+		title_sub2.setBounds(30, 40, 400, 20);
 		title_sub2.setForeground(Color.red);
 		heightl.setBounds(20,70,100,20);
 		heightl.setFont(font3);
@@ -146,15 +150,35 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		height = new JTextField();
 		weight = new JTextField();
 		AC = new JTextField();
+		AC.setText("80");
+		AC.setForeground(Color.LIGHT_GRAY);
 		SBP = new JTextField();
+		SBP.setText("125");
+		SBP.setForeground(Color.LIGHT_GRAY);
 		DBP = new JTextField();
+		DBP.setText("85");
+		DBP.setForeground(Color.LIGHT_GRAY);
 		FBP = new JTextField();
+		FBP.setText("80");
+		FBP.setForeground(Color.LIGHT_GRAY);
 		TC = new JTextField();
+		TC.setText("150");
+		TC.setForeground(Color.LIGHT_GRAY);
 		HDL = new JTextField();
+		HDL.setText("80");
+		HDL.setForeground(Color.LIGHT_GRAY);
 		TG = new JTextField();
+		TG.setText("100");
+		TG.setForeground(Color.LIGHT_GRAY);
 		LDL = new JTextField();
+		LDL.setText("100");
+		LDL.setForeground(Color.LIGHT_GRAY);
 		AST = new JTextField();
+		AST.setText("30");
+		AST.setForeground(Color.LIGHT_GRAY);
 		ALT = new JTextField();
+		ALT.setText("30");
+		ALT.setForeground(Color.LIGHT_GRAY);
 		
 		height.setBounds(70,70,70,25);
 		weight.setBounds(250,70,50,25);
@@ -181,7 +205,7 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		p.add(AST);
 		p.add(ALT);
 		
-		Choice chA = new Choice();
+		chA = new Choice();
 		chA.add("Y");
 		chA.add("N");
 		chA.setBounds(410, 310, 60, 30);
@@ -220,22 +244,58 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		}
 		if(e.getSource() == btnSubmit) {
 			System.out.println("등록 눌림");
-			HealthDTO health = new HealthDTO();
-			health.setId(memberdto.getId());
-			health.setGender(memberdto.getGender());
-			health.setHeight(Integer.valueOf(height.getText()));
-			health.setWeight(Integer.valueOf(weight.getText()));
-			health.setAC(Integer.valueOf(AC.getText()));
-			health.setSBP(Integer.valueOf(SBP.getText()));
-			health.setDBP(Integer.valueOf(DBP.getText()));
-			health.setFBG(Integer.valueOf(FBP.getText()));
-			health.setTC(Integer.valueOf(TC.getText()));
-			health.setHDL(Integer.valueOf(HDL.getText()));
-			health.setTG(Integer.valueOf(TG.getText()));
-			health.setLDL(Integer.valueOf(LDL.getText()));
-			health.setAST(Integer.valueOf(AST.getText()));
-			health.setALT(Integer.valueOf(ALT.getText()));
-//			health.setCf(cf.getText());   // 여기 다시
+			System.out.println(Integer.valueOf(height.getText()));
+			try {
+				if(height.getText().isEmpty()==false && weight.getText().isEmpty()==false) {
+					System.out.println(memberdto.getId());
+					System.out.println(memberdto.getGender());
+					System.out.println(height.getText());
+					System.out.println(weight.getText());
+					System.out.println(AC.getText());
+					System.out.println(SBP.getText());
+					System.out.println(DBP.getText());
+					System.out.println(FBP.getText());
+					System.out.println(TC.getText());
+					System.out.println(HDL.getText());
+					System.out.println(TG.getText());
+					System.out.println(LDL.getText());
+					System.out.println(AST.getText());
+					System.out.println(ALT.getText());
+					System.out.println(chA.getSelectedItem());
+					System.out.println("----------  11");
+//					health.setNo(0);
+					HealthDTO health = new HealthDTO();
+					health.setId(memberdto.getId());
+					health.setGender(memberdto.getGender());
+					health.setHeight(Integer.valueOf(height.getText()));
+					health.setWeight(Integer.valueOf(weight.getText()));
+					health.setAC(Integer.valueOf(AC.getText()));
+					health.setSBP(Integer.valueOf(SBP.getText()));
+					health.setDBP(Integer.valueOf(DBP.getText()));
+					health.setFBG(Integer.valueOf(FBP.getText()));
+					health.setTC(Integer.valueOf(TC.getText()));
+					health.setHDL(Integer.valueOf(HDL.getText()));
+					health.setTG(Integer.valueOf(TG.getText()));
+					health.setLDL(Integer.valueOf(LDL.getText()));
+					health.setAST(Integer.valueOf(AST.getText()));
+					health.setALT(Integer.valueOf(ALT.getText()));
+					health.setCf(chA.getSelectedItem());
+					System.out.println("----------  22");
+					healthdao.add(health);
+					JOptionPane.showMessageDialog(null, "결과 등록이 완료되었습니다 !","등록 완료",JOptionPane.PLAIN_MESSAGE);	
+					dispose();
+					new MainFrame();
+				}else if(height.getText()==null || weight.getText()==null || height.getText().isEmpty()||weight.getText().isEmpty()){
+					System.out.println("필수항목을 입력해주세요.");
+					JOptionPane.showMessageDialog(null, "필수항목을 입력해주세요.","입력 확인",JOptionPane.WARNING_MESSAGE);					
+				}
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+				System.out.println("올바른 형식이 아닙니다.");
+				JOptionPane.showMessageDialog(null, "올바른 형식이 아닙니다.","입력 확인",JOptionPane.WARNING_MESSAGE);					
+			}
+			
 		}
 	}
 }

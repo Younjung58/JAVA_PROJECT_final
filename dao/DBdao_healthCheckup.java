@@ -9,5 +9,5 @@ public interface DBdao_healthCheckup {
 	public ArrayList<HealthDTO> selectAll(String id);
 //	public void update(String a, int b, String id);
 	public void delete(String id, int no);
-	public HealthDTO selectOne(int no);
+	public HealthDTO selectOne(int no, String id);
 }
