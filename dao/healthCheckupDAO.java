@@ -73,7 +73,6 @@ public class healthCheckupDAO implements DBdao_healthCheckup{
 //				System.out.println(healthdto.getAC());
 //				System.out.println(no);
 				String sql = "insert into healthCheckup values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-//				String sql = "select *  from member";
 				PreparedStatement psmt = conn.prepareStatement(sql);
 				System.out.println(1);
 				psmt.setInt(1, (no+1));
@@ -214,7 +213,7 @@ public class healthCheckupDAO implements DBdao_healthCheckup{
 				PreparedStatement psmt = conn.prepareStatement(sql);
 				
 				psmt.setInt(1,no);
-				psmt.setString(1,id);
+				psmt.setString(2,id);
 				
 				ResultSet rs = psmt.executeQuery();
 				

@@ -3,23 +3,25 @@ package view;
 import static view.Frame_.font;
 import static view.Frame_.title;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import dto.HealthDTO;
 import dto.MemberDTO;
@@ -36,9 +38,12 @@ public class resultFrame extends JFrame implements Frame_, ActionListener{
 	private JTable jtable;
 	private JScrollPane jsp;
 	
+	private JButton cancel;
+	private JButton view;
+	
 	public resultFrame(MemberDTO memberdto) {
 		
-		this.setBounds(100, 100, 800, 700);
+		this.setBounds(100, 100, 400, 400);
 		setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -64,73 +69,82 @@ public class resultFrame extends JFrame implements Frame_, ActionListener{
 		
 		// 중간 내용 정리
 	    JPanel frame = new JPanel();
-//	    frame.setBackground(Color.red);
-//	    JScrollPane frame1 = new JScrollPane();
-//	    JLabel title1 = new JLabel("나의 등록내용");
-//	    title1.setFont(font);
-//	    frame.add(title1);
-//	    frame.setBackground(Color.yellow);
-//	    frame.setLocation(0,35);
-//	    frame.setSize(400,30);
-//	    frame1.setPreferredSize(dim);
-//	    frame.setLayout(null); 
-//	    frame1.add(title1);
-//	    frame.add(title1);
-//	    this.add(frame);
-	    
-	    JPanel frame2 = new JPanel();
-	    String header [] = {"아이디","등록번호","선택"};	// 테이블 머리
-//		contents = new Object[][] {{1,2,3},{4,5,6}};	// 테이블 내용목록
-		table = new DefaultTableModel(contents, header);
-		jtable = new JTable(table);	// 틀에 테이블 올리고
-		jsp = new JScrollPane(jtable); // 테이블 넘겨주기
-		ArrayList<HealthDTO> list = healthdao.selectAll(memberdto.getId());
-		int n = list.size();
+	    frame.setLayout(new GridLayout(4,1));
+//	    JPanel framem1 = new JPanel(new GridLayout(3,1));
+	    JLabel sstitle = new JLabel(memberdto.getId()+"님 ! 원하시는 항목을 선택하세요.");
+	    sstitle.setFont(font3);
+	    JPanel frame0 = new JPanel();
+	    frame0.add(sstitle);
+	    frame.add(frame0);
+	    JPanel frame1 = new JPanel();
+	    JPanel frame1s1 = new JPanel();
+	    resultFrame2 t = new resultFrame2();
+	    jtable = t.getTable(memberdto);
+	    frame1s1.add(jtable);
+	    frame1.add(frame1s1,BorderLayout.CENTER);
 		
-		JRadioButton [] select = new JRadioButton[n];
-		ButtonGroup selgg = null;
-		String id;
-		int no;
-		for(HealthDTO h : list) {
-			id=h.getId();
-			no=h.getNo();
-			select[no-1] = new JRadioButton(" ");
-			selgg.add(select[no-1]);
-			select[no-1].addActionListener(this);
-		}
-		no = 1;
-		for (int i = 0; i < select.length; i++) {
-			table.addRow(new Object[] {memberdto.getId(),no,select[i]});
-		}
-		jsp.setLocation(0,32);
-		jsp.setSize(400,550);
+		JTextField a = new JTextField();
+		JTextField b = new JTextField();
+		JTextField c = new JTextField();
 		
-		
-		
-		
-		
+		jtable.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				int rowIndex = jtable.getSelectedRow();
+				if(rowIndex != -1) { // -1이 아니면, 선택된 항목을 불러와서 셀값을 읽을 것 
+									// 이때 tablemodel의 getValueAt(int rowIndex, int columnlndex)사용)
+					TableModel tableModel = jtable.getModel();
+					String tempid = (String)memberdto.getId();
+					String tempnum = (String)((Integer)tableModel.getValueAt(rowIndex, 1)+"번째 항목");
+					a.setText(tempid);
+					b.setText(tempnum);
+					
+					HealthDTO healthdto = new HealthDTO();
+					healthdto = healthdao.selectOne((Integer)tableModel.getValueAt(rowIndex, 1), tempid);
+					c.setText(healthdto.toString());
+				}
+			}
+		});
+		JPanel selectp = new JPanel();
+		selectp.setLayout(new GridLayout(4,2));
+		selectp.add(new JLabel("[ 선택 사항 ]"));
+		selectp.add(new JLabel(""));
+		selectp.add(new JLabel("아이디",JLabel.CENTER));
+		selectp.add(a);
+		selectp.add(new JLabel("항목",JLabel.CENTER));
+		selectp.add(b);
 		
 		
-		JButton cancel = new JButton("삭제");
+		frame1.add(selectp);
+		frame.add(frame1);
+//		frame.add(frame1);
+//		frame.add(framem1);
+		
+		JPanel frame2 = new JPanel();
+		cancel = new JButton("삭제");
+		view = new JButton("결과보기");
+		frame2.add(cancel);
+		frame2.add(view);
+		
+		frame.add(frame2);
 		
 		
-		
-		JButton sel = new JButton("결과보기");
-		
-		
-		
-//		frame2.add(jsp);
-//		frame.add(frame2);
-		this.add(jsp);
+		JPanel frame3 = new JPanel();
+		frame3.add(c);
+		frame.add(frame3);
 		
 		
+		this.add(frame,"Center");
 		
+		cancel.addActionListener(this);
+		view.addActionListener(this);
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getSource() == cancel) {
+			
+		}
 	}
 }

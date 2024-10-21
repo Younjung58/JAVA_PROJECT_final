@@ -81,6 +81,12 @@ public class HealthDTO {
 	public void setTG(int tG) {
 		TG = tG;
 	}
+	@Override
+	public String toString() {
+		return "HealthDTO [id=" + id + ", gender=" + gender + ", no=" + no + ", height=" + height + ", weight=" + weight
+				+ ", AC=" + AC + ", SBP=" + SBP + ", DBP=" + DBP + ", FBG=" + FBG + ", TC=" + TC + ", HDL=" + HDL
+				+ ", TG=" + TG + ", LDL=" + LDL + ", AST=" + AST + ", ALT=" + ALT + ", cf=" + cf + "]";
+	}
 	public int getLDL() {
 		return LDL;
 	}

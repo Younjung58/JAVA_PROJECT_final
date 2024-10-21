@@ -34,3 +34,5 @@ public interface Frame_ {
 	DBdao_healthCheckup healthdao = new healthCheckupDAO();
 	DBdao_healthNormal nhealthdao = healthNormalDAO.getInstance();
 }
+
+
