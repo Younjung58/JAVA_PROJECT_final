@@ -19,14 +19,14 @@ import javax.swing.table.TableColumn;
 import dto.HealthDTO;
 import dto.MemberDTO;
 
-public class resultFrame2 extends JFrame implements Frame_,ActionListener,ItemListener{
+public class resultFramesub extends JFrame implements Frame_,ActionListener,ItemListener{
 	
 	private JTable jtable;
 //	private Object[][] header;
 	private Object[][] contents;
 	int n;
 	
-	public resultFrame2() {
+	public resultFramesub() {
 		// TODO Auto-generated constructor stub
 	}
 

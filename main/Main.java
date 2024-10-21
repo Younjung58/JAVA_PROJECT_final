@@ -1,7 +1,7 @@
 package main;
 
 import view.MainFrame;
-import view.resultFrame;
+import view.resultFramemain;
 
 public class Main {
 

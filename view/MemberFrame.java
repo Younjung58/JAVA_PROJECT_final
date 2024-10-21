@@ -292,7 +292,7 @@ public class MemberFrame extends JFrame implements Frame_, ActionListener, Chang
 			if(flag||list==null) {
 				JOptionPane.showMessageDialog(null, id.getText()+"는 사용 가능한 아이디입니다.","사용 가능",JOptionPane.PLAIN_MESSAGE);
 				f = true;		// 중복검사 진행 확인
-				id.setBorder(normal);;
+				id.setBorder(normal);
 //				dispose();
 //				new MemberFrame(name.getText(),id.getText());
 			}

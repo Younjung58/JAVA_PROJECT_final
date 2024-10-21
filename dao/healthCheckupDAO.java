@@ -175,7 +175,7 @@ public class healthCheckupDAO implements DBdao_healthCheckup{
 		// TODO Auto-generated method stub
 		if(conn()) {
 			try {
-				String sql = "delete from healthCheckup where id = ?, no = ?";
+				String sql = "delete from healthCheckup where id = ? and no = ?";
 				PreparedStatement psmt = conn.prepareStatement(sql);
 				psmt.setString(1, id);
 				psmt.setInt(2, no);
@@ -209,7 +209,7 @@ public class healthCheckupDAO implements DBdao_healthCheckup{
 		HealthDTO healthdto = new HealthDTO();
 		if(conn()) {
 			try {
-				String sql = "select * from healthCheckup where no = ?, id = ?";
+				String sql = "select * from healthCheckup where no = ? and id = ?";
 				PreparedStatement psmt = conn.prepareStatement(sql);
 				
 				psmt.setInt(1,no);
