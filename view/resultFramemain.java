@@ -93,9 +93,9 @@ public class resultFramemain extends JFrame implements Frame_, ActionListener{
 		
 		JTextField a = new JTextField();
 		JTextField b = new JTextField();
-		JLabel c = new JLabel();
-		JLabel c1 = new JLabel();
-		JLabel c2 = new JLabel();
+		JLabel c = new JLabel("",JLabel.CENTER);
+		JLabel c1 = new JLabel("",JLabel.CENTER);
+		JLabel c2 = new JLabel("",JLabel.CENTER);
 		c.setSize(300,100);
 		c1.setSize(300,100);
 		c2.setSize(300,100);
@@ -114,7 +114,7 @@ public class resultFramemain extends JFrame implements Frame_, ActionListener{
 					
 					healthdto = new HealthDTO();
 					healthdto = healthdao.selectOne((Integer)tableModel.getValueAt(rowIndex, 1), tempid);
-					c.setText(healthdto.toString1());
+					c.setText("<현재 등록값> \n");
 					c1.setText(healthdto.toString());
 					c2.setText(healthdto.toString2());
 				}
@@ -135,7 +135,7 @@ public class resultFramemain extends JFrame implements Frame_, ActionListener{
 //		frame.add(frame1);
 //		frame.add(framem1);
 		
-		JPanel frame2 = new JPanel();
+		JPanel frame2 = new JPanel((new GridLayout(3,1)));
 		frame2.add(c);
 		frame2.add(c1);
 		frame2.add(c2);
@@ -171,7 +171,7 @@ public class resultFramemain extends JFrame implements Frame_, ActionListener{
 		}
 		if(e.getSource()==view) {
 			setVisible(false);
-			new resultFrame();		//여기부터 !
+			new resultFrame(healthdto,memberdto);		//여기부터 !
 		}
 	}
 }

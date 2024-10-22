@@ -183,8 +183,8 @@ public class MemberFrame extends JFrame implements Frame_, ActionListener, Chang
 		p.add(pButton);
 		this.add(p);
 		
-		this.setBounds(300,300,0,0);
-		setSize(430,370);
+		this.setBounds(300,300,430,370);
+//		setSize(430,370);
 		setResizable(false);
 		setVisible(true);
 		revalidate();

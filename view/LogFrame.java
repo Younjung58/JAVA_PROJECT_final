@@ -108,5 +108,13 @@ public class LogFrame extends JFrame implements Frame_,ActionListener{
 			new resultFramemain(memberdto);
 			setVisible(false);
 		}
+		if(e.getSource() == sel3) {
+			new diseaseFrame(memberdto);
+			setVisible(false);
+		}
+		if(e.getSource() == sel4) {
+			new memberModFrame(memberdto);
+			setVisible(false);
+		}
 	}
 }

@@ -62,7 +62,7 @@ public class healthNormalDAO extends oracleload implements DBdao_healthNormal{
 		HealthNormalDTO nhealthdto = new HealthNormalDTO();
 		if(conn()) {
 			try {
-				String sql = "select * from healthCheckup where type = ?";
+				String sql = "select * from healthNormal where type = ?";
 				PreparedStatement psmt = conn.prepareStatement(sql);
 				psmt.setString(1,type);
 				
