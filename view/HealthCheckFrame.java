@@ -5,10 +5,14 @@ import static view.Frame_.title;
 
 import java.awt.Choice;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,15 +24,17 @@ import javax.swing.JTextField;
 import dto.HealthDTO;
 import dto.MemberDTO;
 
-public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
+public class HealthCheckFrame extends JFrame implements Frame_,ActionListener, KeyListener {
 	
 	MemberDTO memberdto = null;
 	
 	private JLabel title_s,title_sub1,title_sub2, heightl,weightl,ACl,BP,SBPl,DBPl,BG,FBGl,
 					C,TCl,HDLl,TGl,LDLl,A,ASTl,ALTl,cfl;
-	private JTextField height,weight,AC,SBP,DBP,FBP,TC,HDL,TG,LDL,
-						AST,ALT;
+	JTextField height,weight,AC,SBP,DBP,FBP,TC,HDL,TG,LDL,AST,ALT;
+//	JTextField [] type = {AC,SBP,DBP,FBP,TC,HDL,TG,LDL,AST,ALT};
+	String [] value = {"80","125","85","80","150","80","100","100","30","30"};
 	
+	ArrayList<JTextField> type = new ArrayList<>();
 	private JButton btnSubmit,btnCancel;
 	
 	private Choice chA;
@@ -37,8 +43,6 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 	String id;		//나중에 넘겨 받을 값임
 	
 	Container con = this.getContentPane(); 
-	
-	
 	
 	public HealthCheckFrame(MemberDTO memberdto) {
 		this.memberdto = memberdto;
@@ -146,39 +150,44 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 		p.add(cfl);
 		
 		
+		
 		// 내용 입력 칸 추가
 		height = new JTextField();
 		weight = new JTextField();
+//		for (int i = 0; i < type.length; i++) {
+//			type[i] = new JTextField();
+//			type[i].setText(value[i]);
+//			type[i].setForeground(Color.LIGHT_GRAY);
+//		}
 		AC = new JTextField();
-		AC.setText("80");
-		AC.setForeground(Color.LIGHT_GRAY);
+		type.add(AC);
 		SBP = new JTextField();
-		SBP.setText("125");
-		SBP.setForeground(Color.LIGHT_GRAY);
+		type.add(SBP);
 		DBP = new JTextField();
-		DBP.setText("85");
-		DBP.setForeground(Color.LIGHT_GRAY);
+		type.add(DBP);
 		FBP = new JTextField();
-		FBP.setText("80");
-		FBP.setForeground(Color.LIGHT_GRAY);
+		type.add(FBP);
 		TC = new JTextField();
-		TC.setText("150");
-		TC.setForeground(Color.LIGHT_GRAY);
+		type.add(TC);
 		HDL = new JTextField();
-		HDL.setText("80");
-		HDL.setForeground(Color.LIGHT_GRAY);
+		type.add(HDL);
 		TG = new JTextField();
-		TG.setText("100");
-		TG.setForeground(Color.LIGHT_GRAY);
+		type.add(TG);
 		LDL = new JTextField();
-		LDL.setText("100");
-		LDL.setForeground(Color.LIGHT_GRAY);
+		type.add(LDL);
 		AST = new JTextField();
-		AST.setText("30");
-		AST.setForeground(Color.LIGHT_GRAY);
+		type.add(AST);
 		ALT = new JTextField();
-		ALT.setText("30");
-		ALT.setForeground(Color.LIGHT_GRAY);
+		type.add(ALT);
+		
+		for (int i = 0; i < type.size(); i++) {		
+			// 기본값이 저장되어있는 항목에 대해 회원이 직접 입력시에는 글자색 검정으로 바꾸기 위하여
+			// 항목을 생성시에 ArrayList타입으로 저장하여 KeyListener, 기존값, 기존 글자색 등록
+			type.get(i).setText(value[i]);
+			type.get(i).setForeground(Color.LIGHT_GRAY);
+			type.get(i).addKeyListener(this);
+		}
+
 		
 		height.setBounds(70,70,70,25);
 		weight.setBounds(250,70,50,25);
@@ -237,6 +246,11 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource() == AC) {
+			AC.setForeground(Color.BLACK);
+		}
+		
+		
 		if(e.getSource() == btnCancel) {
 			System.out.println("취소버튼 눌림");
 			setVisible(false);
@@ -284,7 +298,7 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 					healthdao.add(health);
 					JOptionPane.showMessageDialog(null, "결과 등록이 완료되었습니다 !","등록 완료",JOptionPane.PLAIN_MESSAGE);	
 					dispose();
-					new MainFrame();
+					new LogFrame(memberdto);
 				}else if(height.getText()==null || weight.getText()==null || height.getText().isEmpty()||weight.getText().isEmpty()){
 					System.out.println("필수항목을 입력해주세요.");
 					JOptionPane.showMessageDialog(null, "필수항목을 입력해주세요.","입력 확인",JOptionPane.WARNING_MESSAGE);					
@@ -297,5 +311,26 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener{
 			}
 			
 		}
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < type.size(); i++) {
+			if(e.getSource() ==type.get(i)) {
+				type.get(i).setForeground(Color.black);
+			}
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,68 +1,42 @@
 package dao;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Optional;
 
 import dto.HealthDTO;
  
 
-public class healthCheckupDAO implements DBdao_healthCheckup{
+public class healthCheckupDAO extends oracleload implements DBdao_healthCheckup{
 
-	private String username = "system";
-	private String password = "11111111";
-	private String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-	private String driverName = "oracle.jdbc.driver.OracleDriver";
-	public Connection conn = null;		// 커넥션 자원 변수
+	public static healthCheckupDAO healthdao = null;
+	private int n,max = 0;
 	
-	public void load() {
-		init();		// 드라이버 로드 - 커넥션 가져오기
-	}
-	
-	private void init() {		// 드라이버 로드
-		try {
-			Class.forName(driverName);
-			System.out.println("오라클 드라이버 로드 성공");	// 빌드가 정확하게 됐을 때 이 문구가 출력될 것임.
-			// 이 문구가 제대로 출력된다면, 오라클사에서 배포한 라이브러리를 사용할 준비가 완료된것을 의미함.
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	public boolean conn() {		// 커넥션 가져오는 공용 코드를 메서드로 정의
-		try {
-			conn = DriverManager.getConnection(url/*포트넘버 1521*/,username/*아이디*/,password /*비밀번호*/);
-			System.out.println("커넥션 자원 획득 성공lll");
-			return true;		// 커넥션 자원을 정상적으로 획득 할 경우
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;	// 커넥션 자원을 획득하지 못한 경우
-	}
-//	public static healthCheckupDAO healthdao = null;
-	
-	public healthCheckupDAO(){
+	private healthCheckupDAO(){
 		load();
 		// 객체가 생성될 때 오라클 드라이버 로드의 과정 진행(초기 1번)
 	}
-//	public static healthCheckupDAO getInstance() {
-//		if(healthdao == null) {
-//			healthdao = new healthCheckupDAO();
-//		}
-//		return healthdao; 
-//	}
+	public static healthCheckupDAO getInstance() {
+		if(healthdao == null) {
+			healthdao = new healthCheckupDAO();
+		}
+		return healthdao; 
+	}
 	private int checkId(String id) {
 		ArrayList<HealthDTO> mhealth = new ArrayList<>();
 		mhealth = this.selectAll(id);
+		for (HealthDTO h : mhealth) {
+			n = h.getNo();
+			if(n>max) {
+				max = n;
+			}
+		}
 		if(mhealth == null) {
 			return 0;
 		}
-		return mhealth.size();
+		return max;
 	}
 
 	@Override
@@ -70,12 +44,11 @@ public class healthCheckupDAO implements DBdao_healthCheckup{
 		int no = this.checkId(healthdto.getId());		// try구문 안에 커넥션자원 두번 받아오기 불가능
 		if(conn()) {
 			try {
-//				System.out.println(healthdto.getAC());
-//				System.out.println(no);
 				String sql = "insert into healthCheckup values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement psmt = conn.prepareStatement(sql);
 				System.out.println(1);
-				psmt.setInt(1, (no+1));
+				System.out.println(max);
+				psmt.setInt(1, (max+1));
 				psmt.setString(2, healthdto.getId());
 				psmt.setString(3, healthdto.getGender());
 				psmt.setInt(4, healthdto.getHeight());

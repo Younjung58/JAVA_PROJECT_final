@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import dto.HealthNormalDTO;
 
 public class healthNormalDAO extends oracleload implements DBdao_healthNormal{
+	
 	public static healthNormalDAO healthnormaldao = null;
 	
 	private healthNormalDAO(){

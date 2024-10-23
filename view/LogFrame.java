@@ -66,7 +66,7 @@ public class LogFrame extends JFrame implements Frame_,ActionListener{
 		sel2.setFont(font3);
 		sel3 = new JButton("3. 질병 탐색하기");
 		sel3.setFont(font3);
-		sel4 = new JButton("4. 개인정보 수정하기");
+		sel4 = new JButton("4. 비밀번호 변경하기");
 		sel4.setFont(font3);
 		sel5 = new JButton("5. 로그아웃");
 		sel5.setFont(font3);

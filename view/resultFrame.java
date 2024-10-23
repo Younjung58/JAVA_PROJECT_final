@@ -206,7 +206,7 @@ public class resultFrame extends JFrame implements Frame_,ActionListener{
 					}
 					String d2 = ("관련 질병명 : " + healthdiseasedto.getName()+"\n"+b);
 					String d3 = ("관련 원인 : " + healthdiseasedto.getCause()+"\n"+b);
-					String d4 = ("관련 합병증 : " + healthdiseasedto.getDisease()+"\n"+b);
+					String d4 = ("관련 합병증 / 증상 : " + healthdiseasedto.getDisease()+"\n"+b);
 					String d5 = ("관리 팁 1 : " + healthdiseasedto.getTip1()+"\n"+b);
 					String d6 = ("관리 팁 2 : " + healthdiseasedto.getTip2()+"\n"+b);
 					if(healthdiseasedto.getTip2()==null) {

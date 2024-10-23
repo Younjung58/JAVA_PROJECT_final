@@ -106,6 +106,7 @@ public class MainFrame extends JFrame implements Frame_, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		boolean flag = true;
 		if(e.getSource()==cb1) {
 			System.out.println("회원가입 버튼 눌림");
 			MemberFrame m = new MemberFrame();
@@ -131,17 +132,19 @@ public class MainFrame extends JFrame implements Frame_, ActionListener {
 						setVisible(false);
 						LogFrame log = new LogFrame(tempdto);
 						JOptionPane.showMessageDialog(null, "로그인 되었습니다.","어서오세요!",JOptionPane.PLAIN_MESSAGE);
+						flag = false;
 					}else {
 						System.out.println(pwt+"--입력값");
 						System.out.println(tempdto.getPw());
 						JOptionPane.showMessageDialog(null, "비밀번호가 일치하지 않습니다.","비밀번호 확인",JOptionPane.WARNING_MESSAGE);
+						flag = false;
 					}					
 					break;
-				}else {
-					JOptionPane.showMessageDialog(null, "아이디가 존재하지않습니다.","아이디 확인",JOptionPane.WARNING_MESSAGE);
 				}
 			}
-			
+			if(flag) {				
+				JOptionPane.showMessageDialog(null, "아이디가 존재하지않습니다.","아이디 확인",JOptionPane.WARNING_MESSAGE);
+			}
 		}
 	}
 }

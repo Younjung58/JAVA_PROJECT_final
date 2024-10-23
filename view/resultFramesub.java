@@ -16,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import dao.healthCheckupDAO;
 import dto.HealthDTO;
 import dto.MemberDTO;
 
@@ -25,6 +26,8 @@ public class resultFramesub extends JFrame implements Frame_,ActionListener,Item
 //	private Object[][] header;
 	private Object[][] contents;
 	int n;
+	private ArrayList<HealthDTO> healthlist = new ArrayList<>();
+//	private healthCheckupDAO healthcheckup = healthChec/kupDAO.getInstance();
 	
 	public resultFramesub() {
 		// TODO Auto-generated constructor stub
@@ -34,6 +37,7 @@ public class resultFramesub extends JFrame implements Frame_,ActionListener,Item
 		if(jtable == null) {
 			String [] columnNames = {"아이디", "항목", "선택"};
 //			DefaultTableModel table = new DefaultTableModel(contents, header);
+//			healthlist = healthcheckup.selectAll(memberdto.getId());
 			ArrayList<HealthDTO> list = healthdao.selectAll(memberdto.getId());
 			n = list.size();
 			JCheckBox [] select = new JCheckBox[n];
@@ -41,11 +45,12 @@ public class resultFramesub extends JFrame implements Frame_,ActionListener,Item
 			for (int i = 0; i < n; i++) {
 					select[i] = new JCheckBox("선택");
 					rowData[i][0] = memberdto.getId()+"님";
-					rowData[i][1] =(i+1);
+					rowData[i][1] = list.get(i).getNo();
 					rowData[i][2] = select[i];
 					select[i].setBorderPainted(true);
 					select[i].addItemListener(this);
 			}
+			
 			jtable = new JTable(rowData, columnNames);
 			
 			TableColumn name = jtable.getColumn("아이디");

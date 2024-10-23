@@ -31,7 +31,7 @@ public interface Frame_ {
 	public JLabel bottom = new JLabel(" 개발 : 박연정    ",JLabel.RIGHT);
 	
 	DBdao_member memberdao = memberDAO.getInstance(); 
-	DBdao_healthCheckup healthdao = new healthCheckupDAO();
+	DBdao_healthCheckup healthdao = healthCheckupDAO.getInstance();
 	DBdao_healthNormal nhealthdao = healthNormalDAO.getInstance();
 }
 

@@ -49,6 +49,7 @@ public class resultFramemain extends JFrame implements Frame_, ActionListener{
 	private int selnum;
 	MemberDTO memberdto = null;
 	HealthDTO healthdto = null;
+	
 	public resultFramemain(MemberDTO memberdto) {
 		this.memberdto = memberdto;
 		this.setBounds(300, 300, 480, 380);
@@ -108,12 +109,12 @@ public class resultFramemain extends JFrame implements Frame_, ActionListener{
 					String tempid = (String)memberdto.getId();
 					int tempnum = (Integer)tableModel.getValueAt(rowIndex, 1);
 					selid = tempid;
-					selnum=tempnum;
+					selnum = tempnum;
 					a.setText(tempid);
 					b.setText(tempnum+"번째 항목");
 					
 					healthdto = new HealthDTO();
-					healthdto = healthdao.selectOne((Integer)tableModel.getValueAt(rowIndex, 1), tempid);
+					healthdto = healthdao.selectOne((Integer)tableModel.getValueAt(rowIndex, 1),tempid);
 					c.setText("<현재 등록값> \n");
 					c1.setText(healthdto.toString());
 					c2.setText(healthdto.toString2());
@@ -154,6 +155,7 @@ public class resultFramemain extends JFrame implements Frame_, ActionListener{
 		this.add(frame,"Center");
 		
 		cancel.addActionListener(this);
+		delete.addActionListener(this);
 		view.addActionListener(this);
 		
 	}
@@ -162,8 +164,12 @@ public class resultFramemain extends JFrame implements Frame_, ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource() == delete) {
+			System.out.println(selid);
+			System.out.println(selnum);
 			healthdao.delete(selid , selnum);
 			JOptionPane.showMessageDialog(null, "해당 항목 삭제완료 되었습니다.","삭제 완료",JOptionPane.PLAIN_MESSAGE);
+			setVisible(false);
+			new resultFramemain(memberdto);
 		}
 		if(e.getSource() == cancel) {
 			setVisible(false);
