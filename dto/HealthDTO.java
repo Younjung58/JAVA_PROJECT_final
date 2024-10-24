@@ -1,6 +1,6 @@
 package dto;
 
-public class HealthDTO {
+public class healthDTO {
 	
 	private String id;
 	private String gender;

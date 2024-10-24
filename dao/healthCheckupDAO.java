@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import dto.HealthDTO;
+import dto.healthDTO;
  
 
 public class healthCheckupDAO extends oracleload implements DBdao_healthCheckup{
@@ -25,9 +25,9 @@ public class healthCheckupDAO extends oracleload implements DBdao_healthCheckup{
 		return healthdao; 
 	}
 	private int checkId(String id) {
-		ArrayList<HealthDTO> mhealth = new ArrayList<>();
+		ArrayList<healthDTO> mhealth = new ArrayList<>();
 		mhealth = this.selectAll(id);
-		for (HealthDTO h : mhealth) {
+		for (healthDTO h : mhealth) {
 			n = h.getNo();
 			if(n>max) {
 				max = n;
@@ -40,7 +40,7 @@ public class healthCheckupDAO extends oracleload implements DBdao_healthCheckup{
 	}
 
 	@Override
-	public void add(HealthDTO healthdto) {	
+	public void add(healthDTO healthdto) {	
 		int no = this.checkId(healthdto.getId());		// try구문 안에 커넥션자원 두번 받아오기 불가능
 		if(conn()) {
 			try {
@@ -91,8 +91,8 @@ public class healthCheckupDAO extends oracleload implements DBdao_healthCheckup{
 	}
 
 	@Override
-	public ArrayList<HealthDTO> selectAll(String id) {
-		ArrayList<HealthDTO> healthlist = new ArrayList<>();
+	public ArrayList<healthDTO> selectAll(String id) {
+		ArrayList<healthDTO> healthlist = new ArrayList<>();
 //		if(conn!=null) {
 //			conn();
 //		}
@@ -106,7 +106,7 @@ public class healthCheckupDAO extends oracleload implements DBdao_healthCheckup{
 				ResultSet rs = psmt.executeQuery();
 				
 				while(rs.next()) {
-					HealthDTO healthdto = new HealthDTO();
+					healthDTO healthdto = new healthDTO();
 					healthdto.setNo(rs.getInt("no"));
 					healthdto.setId(rs.getString("id"));
 					healthdto.setGender(rs.getString("gender"));
@@ -178,8 +178,8 @@ public class healthCheckupDAO extends oracleload implements DBdao_healthCheckup{
 		}
 	}
 	@Override
-	public HealthDTO selectOne(int no, String id) {
-		HealthDTO healthdto = new HealthDTO();
+	public healthDTO selectOne(int no, String id) {
+		healthDTO healthdto = new healthDTO();
 		if(conn()) {
 			try {
 				String sql = "select * from healthCheckup where no = ? and id = ?";

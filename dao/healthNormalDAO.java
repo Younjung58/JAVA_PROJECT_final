@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import dto.HealthNormalDTO;
+import dto.healthNormalDTO;
 
 public class healthNormalDAO extends oracleload implements DBdao_healthNormal{
 	
@@ -23,9 +23,9 @@ public class healthNormalDAO extends oracleload implements DBdao_healthNormal{
 	}
 	
 	@Override
-	public ArrayList<HealthNormalDTO> selectAll() {
+	public ArrayList<healthNormalDTO> selectAll() {
 		// TODO Auto-generated method stub
-		ArrayList<HealthNormalDTO> nhealthlist = new ArrayList<>();
+		ArrayList<healthNormalDTO> nhealthlist = new ArrayList<>();
 		if(conn()) {
 			try {
 				String sql = "select * from healthNormal";
@@ -34,7 +34,7 @@ public class healthNormalDAO extends oracleload implements DBdao_healthNormal{
 				ResultSet rs = psmt.executeQuery();
 				
 				while(rs.next()) {
-					HealthNormalDTO nhealthdto = new HealthNormalDTO();
+					healthNormalDTO nhealthdto = new healthNormalDTO();
 					nhealthdto.setType(rs.getString("type"));
 					nhealthdto.setMin(rs.getFloat("min"));
 					nhealthdto.setMax(rs.getFloat("max"));
@@ -59,8 +59,8 @@ public class healthNormalDAO extends oracleload implements DBdao_healthNormal{
 	}
 
 	@Override
-	public HealthNormalDTO selectOne(String type) {
-		HealthNormalDTO nhealthdto = new HealthNormalDTO();
+	public healthNormalDTO selectOne(String type) {
+		healthNormalDTO nhealthdto = new healthNormalDTO();
 		if(conn()) {
 			try {
 				String sql = "select * from healthNormal where type = ?";

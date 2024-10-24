@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import dto.HealthDTO;
+import dto.healthDTO;
 import dto.healthDiseaseDTO;
 
 public class diseaseDAO extends oracleload implements DBdao_disease{
@@ -65,7 +65,7 @@ public class diseaseDAO extends oracleload implements DBdao_disease{
 		return null;
 		
 	}
-	
+	@Override
 	public healthDiseaseDTO selectSBP_DBP(String type, String name) {
 		healthDiseaseDTO diseasedto = new healthDiseaseDTO();
 		if(conn()) {
@@ -105,7 +105,7 @@ public class diseaseDAO extends oracleload implements DBdao_disease{
 		}
 		return null;
 	}
-	
+	@Override
 	public ArrayList<healthDiseaseDTO> selectAll() {
 		ArrayList<healthDiseaseDTO> diseaselist = new ArrayList<>();
 		if(conn()){

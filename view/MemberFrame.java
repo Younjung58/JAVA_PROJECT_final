@@ -27,7 +27,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import dao.memberDAO;
-import dto.MemberDTO;
+import dto.memberDTO;
 
 public class MemberFrame extends JFrame implements Frame_, ActionListener, ChangeListener{
 										// 고정된 값이 머리글, 바닥글을 구현받음
@@ -236,7 +236,7 @@ public class MemberFrame extends JFrame implements Frame_, ActionListener, Chang
 			if(pw_1.equals(pw_2)&&f) {				
 //				System.out.println(name.getText());
 //				this.stateChanged(null);
-				MemberDTO memberdto= new MemberDTO();
+				memberDTO memberdto= new memberDTO();
 //				System.out.println(year+"-"+month+"-"+date);
 				memberdto.setName(name.getText());
 				memberdto.setBirth(year+"-"+month+"-"+date);
@@ -270,7 +270,7 @@ public class MemberFrame extends JFrame implements Frame_, ActionListener, Chang
 			}
 		}
 		if(e.getSource() == idcf) {
-			ArrayList<MemberDTO> list = new ArrayList<>();
+			ArrayList<memberDTO> list = new ArrayList<>();
 			list = memberdao.selectAll();
 			boolean flag = true;
 //			System.out.println(id.getText());
@@ -278,7 +278,7 @@ public class MemberFrame extends JFrame implements Frame_, ActionListener, Chang
 //				System.out.println(m.getId()+" --등록값");
 //			}
 			if(list!=null) {
-				for(MemberDTO m : list) {
+				for(memberDTO m : list) {
 					if(m.getId().equals(id.getText())) {
 						JOptionPane.showMessageDialog(null, "해당 아이디는 이미 존재합니다.","아이디 중복",JOptionPane.WARNING_MESSAGE);
 	//					dispose();

@@ -2,9 +2,9 @@ package dao;
 
 import java.util.ArrayList;
 
-import dto.HealthNormalDTO;
+import dto.healthNormalDTO;
 
 public interface DBdao_healthNormal {
-	public ArrayList<HealthNormalDTO> selectAll();
-	public HealthNormalDTO selectOne(String type);
+	public ArrayList<healthNormalDTO> selectAll();
+	public healthNormalDTO selectOne(String type);
 }

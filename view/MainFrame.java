@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import dto.MemberDTO;
+import dto.memberDTO;
 
 public class MainFrame extends JFrame implements Frame_, ActionListener {
 										// 고정된 값이 머리글, 바닥글을 구현받음
@@ -115,9 +115,9 @@ public class MainFrame extends JFrame implements Frame_, ActionListener {
 		}
 		if(e.getSource()==cb2) {
 			System.out.println("로그인 버튼 눌림");
-			MemberDTO tempdto = new MemberDTO();
-			ArrayList<MemberDTO> mlist = memberdao.selectAll();
-			for(MemberDTO m : mlist) {
+			memberDTO tempdto = new memberDTO();
+			ArrayList<memberDTO> mlist = memberdao.selectAll();
+			for(memberDTO m : mlist) {
 				if(m.getId().equals(ct1.getText())) {
 					tempdto = memberdao.selectOne(ct1.getText());
 					String pwt = "";

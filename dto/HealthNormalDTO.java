@@ -1,6 +1,6 @@
 package dto;
 
-public class HealthNormalDTO {
+public class healthNormalDTO {
 	private String type;
 	public String getType() {
 		return type;

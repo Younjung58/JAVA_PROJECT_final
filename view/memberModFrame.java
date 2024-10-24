@@ -16,11 +16,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
-import dto.MemberDTO;
+import dto.memberDTO;
 
 public class memberModFrame extends JFrame  implements Frame_, ActionListener{
 	
-	private MemberDTO memberdto = null;
+	private memberDTO memberdto = null;
 	
 	private JLabel p1 = new JLabel("비밀번호");
 	private JPasswordField pw1 = new JPasswordField(20);	// 비밀번호 가려지는 형식
@@ -31,7 +31,7 @@ public class memberModFrame extends JFrame  implements Frame_, ActionListener{
 	private JButton btnCancel;
 	private JButton btnSubmit;
 	
-	public memberModFrame(MemberDTO memberdto) {
+	public memberModFrame(memberDTO memberdto) {
 		this.memberdto = memberdto;
 		
 		// 머릿글 제목 추가

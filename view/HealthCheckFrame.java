@@ -21,12 +21,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import dto.HealthDTO;
-import dto.MemberDTO;
+import dto.healthDTO;
+import dto.memberDTO;
 
 public class HealthCheckFrame extends JFrame implements Frame_,ActionListener, KeyListener {
 	
-	MemberDTO memberdto = null;
+	memberDTO memberdto = null;
 	
 	private JLabel title_s,title_sub1,title_sub2, heightl,weightl,ACl,BP,SBPl,DBPl,BG,FBGl,
 					C,TCl,HDLl,TGl,LDLl,A,ASTl,ALTl,cfl;
@@ -40,11 +40,11 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener, K
 	private Choice chA;
 	
 	
-	String id;		//나중에 넘겨 받을 값임
+	private String id;		//나중에 넘겨 받을 값임
 	
 	Container con = this.getContentPane(); 
 	
-	public HealthCheckFrame(MemberDTO memberdto) {
+	public HealthCheckFrame(memberDTO memberdto) {
 		this.memberdto = memberdto;
 		// 머릿글 제목 추가
 		title.setForeground(Color.white);
@@ -278,7 +278,7 @@ public class HealthCheckFrame extends JFrame implements Frame_,ActionListener, K
 					System.out.println(chA.getSelectedItem());
 					System.out.println("----------  11");
 //					health.setNo(0);
-					HealthDTO health = new HealthDTO();
+					healthDTO health = new healthDTO();
 					health.setId(memberdto.getId());
 					health.setGender(memberdto.getGender());
 					health.setHeight(Integer.valueOf(height.getText()));

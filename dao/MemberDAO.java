@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import dto.MemberDTO;
+import dto.memberDTO;
 		// CRUD 작업을 하는 memberDAO는 객체 하나만 생성해서 사용해도 되기에 싱글톤 기법사용
 		// 객체가 무한정으로 생성되는 것을 방지하고, 프로그램실행시 하나의 클래스 객체만 생성되는 것을 보장
 public class memberDAO extends oracleload implements DBdao_member{
@@ -23,7 +23,7 @@ public class memberDAO extends oracleload implements DBdao_member{
 		return memberdao; 
 	}
 	@Override
-	public void add(MemberDTO memberdto) {
+	public void add(memberDTO memberdto) {
 		// TODO Auto-generated method stub
 		if(conn()) {
 			try {
@@ -61,9 +61,9 @@ public class memberDAO extends oracleload implements DBdao_member{
 		}
 	}
 	@Override
-	public ArrayList<MemberDTO> selectAll() {
+	public ArrayList<memberDTO> selectAll() {
 		// TODO Auto-generated method stub
-		ArrayList<MemberDTO> memberlist = new ArrayList<>();
+		ArrayList<memberDTO> memberlist = new ArrayList<>();
 		if(conn()) {
 			try {
 				String sql = "select * from member";
@@ -72,7 +72,7 @@ public class memberDAO extends oracleload implements DBdao_member{
 				ResultSet rs = psmt.executeQuery();
 				
 				while(rs.next()) {
-					MemberDTO memberdto = new MemberDTO();
+					memberDTO memberdto = new memberDTO();
 					memberdto.setName(rs.getString("name"));
 					memberdto.setBirth(rs.getString("birth"));
 					memberdto.setGender(rs.getString("gender"));
@@ -162,8 +162,8 @@ public class memberDAO extends oracleload implements DBdao_member{
 		}
 	}
 	@Override
-	public MemberDTO selectOne(String id) {
-		MemberDTO tempdto = new MemberDTO();
+	public memberDTO selectOne(String id) {
+		memberDTO tempdto = new memberDTO();
 		if(conn()) {
 			try {
 				String sql = "select * from member where id = ?";

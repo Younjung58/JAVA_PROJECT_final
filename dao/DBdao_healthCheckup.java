@@ -2,12 +2,12 @@ package dao;
 
 import java.util.ArrayList;
 
-import dto.HealthDTO;
+import dto.healthDTO;
 
 public interface DBdao_healthCheckup {
-	public void add(HealthDTO healthdto);
-	public ArrayList<HealthDTO> selectAll(String id);
+	public void add(healthDTO healthdto);
+	public ArrayList<healthDTO> selectAll(String id);
 //	public void update(String a, int b, String id);
 	public void delete(String id, int no);
-	public HealthDTO selectOne(int no, String id);
+	public healthDTO selectOne(int no, String id);
 }

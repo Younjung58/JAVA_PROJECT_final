@@ -24,8 +24,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import dto.HealthDTO;
-import dto.MemberDTO;
+import dto.healthDTO;
+import dto.memberDTO;
 
 public class resultFramemain extends JFrame implements Frame_, ActionListener{
 	
@@ -47,10 +47,10 @@ public class resultFramemain extends JFrame implements Frame_, ActionListener{
 	
 	private String selid;
 	private int selnum;
-	MemberDTO memberdto = null;
-	HealthDTO healthdto = null;
+	private memberDTO memberdto = null;
+	private healthDTO healthdto = null;
 	
-	public resultFramemain(MemberDTO memberdto) {
+	public resultFramemain(memberDTO memberdto) {
 		this.memberdto = memberdto;
 		this.setBounds(300, 300, 480, 380);
 		setResizable(false);
@@ -113,7 +113,7 @@ public class resultFramemain extends JFrame implements Frame_, ActionListener{
 					a.setText(tempid);
 					b.setText(tempnum+"번째 항목");
 					
-					healthdto = new HealthDTO();
+					healthdto = new healthDTO();
 					healthdto = healthdao.selectOne((Integer)tableModel.getValueAt(rowIndex, 1),tempid);
 					c.setText("<현재 등록값> \n");
 					c1.setText(healthdto.toString());

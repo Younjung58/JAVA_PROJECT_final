@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import dto.MemberDTO;
+import dto.memberDTO;
 
 public class LogFrame extends JFrame implements Frame_,ActionListener{
 	
@@ -24,9 +24,9 @@ public class LogFrame extends JFrame implements Frame_,ActionListener{
 	private JButton sel1, sel2, sel3, sel4, sel5;
 	
 	Container con = this.getContentPane(); 
-	MemberDTO memberdto = null;
+	memberDTO memberdto = null;
 
-	public LogFrame(MemberDTO memberdto) {
+	public LogFrame(memberDTO memberdto) {
 		this.memberdto = memberdto;
 		
 		// 머릿글 제목 추가

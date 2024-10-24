@@ -17,8 +17,8 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import dao.healthCheckupDAO;
-import dto.HealthDTO;
-import dto.MemberDTO;
+import dto.healthDTO;
+import dto.memberDTO;
 
 public class resultFramesub extends JFrame implements Frame_,ActionListener,ItemListener{
 	
@@ -26,19 +26,19 @@ public class resultFramesub extends JFrame implements Frame_,ActionListener,Item
 //	private Object[][] header;
 	private Object[][] contents;
 	int n;
-	private ArrayList<HealthDTO> healthlist = new ArrayList<>();
+	private ArrayList<healthDTO> healthlist = new ArrayList<>();
 //	private healthCheckupDAO healthcheckup = healthChec/kupDAO.getInstance();
 	
 	public resultFramesub() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public JTable getTable(MemberDTO memberdto) {
+	public JTable getTable(memberDTO memberdto) {
 		if(jtable == null) {
 			String [] columnNames = {"아이디", "항목", "선택"};
 //			DefaultTableModel table = new DefaultTableModel(contents, header);
 //			healthlist = healthcheckup.selectAll(memberdto.getId());
-			ArrayList<HealthDTO> list = healthdao.selectAll(memberdto.getId());
+			ArrayList<healthDTO> list = healthdao.selectAll(memberdto.getId());
 			n = list.size();
 			JCheckBox [] select = new JCheckBox[n];
 			Object [][] rowData= new Object[n][3];

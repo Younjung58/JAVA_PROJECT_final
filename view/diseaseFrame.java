@@ -19,13 +19,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import dao.diseaseDAO;
-import dto.MemberDTO;
+import dto.memberDTO;
 import dto.healthDiseaseDTO;
 
 public class diseaseFrame extends JFrame implements Frame_,ActionListener{
 	
 	private healthDiseaseDTO healthdiseasedto = null;
-	private MemberDTO memberdto = null;
+	private memberDTO memberdto = null;
 	private diseaseDAO diseasedao = diseaseDAO.getInstance();
 	
 	private ArrayList<String> diseaseList;
@@ -38,7 +38,7 @@ public class diseaseFrame extends JFrame implements Frame_,ActionListener{
 	String d1,d2,d3,d4,d5,d6,d7;
 	
 	
-	public diseaseFrame(MemberDTO memberdto) {
+	public diseaseFrame(memberDTO memberdto) {
 		this.memberdto = memberdto;
 		this.setBounds(300, 300, 600, 400);
 		setResizable(false);

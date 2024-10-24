@@ -1,6 +1,6 @@
 package dto;
 
-public class MemberDTO {
+public class memberDTO {
 	private String name;
 	private String birth;
 	private String gender;

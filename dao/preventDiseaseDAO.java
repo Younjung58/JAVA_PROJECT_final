@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dto.MemberDTO;
+import dto.memberDTO;
 import dto.preventDiseaseDTO;
 
 public class preventDiseaseDAO extends oracleload implements DBdao_prevent {

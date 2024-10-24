@@ -21,19 +21,19 @@ import javax.swing.JTextField;
 import dao.diseaseDAO;
 import dao.healthNormalDAO;
 import dao.preventDiseaseDAO;
-import dto.HealthDTO;
-import dto.HealthNormalDTO;
-import dto.MemberDTO;
+import dto.healthDTO;
+import dto.healthNormalDTO;
+import dto.memberDTO;
 import dto.healthDiseaseDTO;
 import dto.preventDiseaseDTO;
 
 public class resultFrame extends JFrame implements Frame_,ActionListener{
 	
-	private HealthDTO healthdto = null;
+	private healthDTO healthdto = null;
 	private healthNormalDAO normal = healthNormalDAO.getInstance();
 	private diseaseDAO disease = diseaseDAO.getInstance();
 	private preventDiseaseDAO prevent = preventDiseaseDAO.getInstance();
-	private MemberDTO memberdto = null;
+	private memberDTO memberdto = null;
 	
 	private ArrayList<String> diseaseList;
 	private String [] diseaseList1;
@@ -46,7 +46,7 @@ public class resultFrame extends JFrame implements Frame_,ActionListener{
 	private JButton cancel;
 	private JButton back;
 	
-	public resultFrame(HealthDTO healthdto, MemberDTO memberdto) {
+	public resultFrame(healthDTO healthdto, memberDTO memberdto) {
 		this.memberdto = memberdto;
 		this.healthdto = healthdto;
 		
@@ -224,13 +224,12 @@ public class resultFrame extends JFrame implements Frame_,ActionListener{
 					
 			}
 				
-			
 		});
 	}
 	
-	private ArrayList<String> getAbnormal(HealthDTO healthdto){
+	private ArrayList<String> getAbnormal(healthDTO healthdto){
 		ArrayList<String> abnormal = new ArrayList<>();
-		HealthNormalDTO normaldto = new HealthNormalDTO();
+		healthNormalDTO normaldto = new healthNormalDTO();
 		this.gender = healthdto.getGender();
 		BMI = (float)(healthdto.getWeight() / ((healthdto.getHeight()*0.01)*(healthdto.getHeight()*0.01)));
 		normaldto = normal.selectOne("BMI");
