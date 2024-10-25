@@ -9,13 +9,13 @@ import dto.preventDiseaseDTO;
 
 public class preventDiseaseDAO extends oracleload implements DBdao_prevent {
 	
-	public static preventDiseaseDAO preventdao = null;
+	public static DBdao_prevent preventdao = null;
 	
 	private preventDiseaseDAO(){
 		load();
 		// 객체가 생성될 때 오라클 드라이버 로드의 과정 진행(초기 1번)
 	}
-	public static preventDiseaseDAO getInstance() {
+	public static DBdao_prevent getInstance() {
 		if(preventdao == null) {
 			preventdao = new preventDiseaseDAO();
 		}

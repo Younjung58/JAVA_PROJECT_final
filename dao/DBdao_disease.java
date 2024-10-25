@@ -8,4 +8,5 @@ public interface DBdao_disease {
 	public healthDiseaseDTO selectOne(String type);
 	public healthDiseaseDTO selectSBP_DBP(String type, String name);
 	public ArrayList<healthDiseaseDTO> selectAll();
+	public ArrayList<healthDiseaseDTO> selectDisease(String n);
 }

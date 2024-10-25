@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import dao.DBdao_disease;
 import dao.diseaseDAO;
 import dto.memberDTO;
 import dto.healthDiseaseDTO;
@@ -26,7 +27,7 @@ public class diseaseFrame extends JFrame implements Frame_,ActionListener{
 	
 	private healthDiseaseDTO healthdiseasedto = null;
 	private memberDTO memberdto = null;
-	private diseaseDAO diseasedao = diseaseDAO.getInstance();
+	private DBdao_disease diseasedao = diseaseDAO.getInstance();
 	
 	private ArrayList<String> diseaseList;
 	private String [] diseaseList1;

@@ -11,14 +11,14 @@ import dto.healthDTO;
 
 public class healthCheckupDAO extends oracleload implements DBdao_healthCheckup{
 
-	public static healthCheckupDAO healthdao = null;
+	public static DBdao_healthCheckup healthdao = null;
 	private int n,max = 0;
 	
 	private healthCheckupDAO(){
 		load();
 		// 객체가 생성될 때 오라클 드라이버 로드의 과정 진행(초기 1번)
 	}
-	public static healthCheckupDAO getInstance() {
+	public static DBdao_healthCheckup getInstance() {
 		if(healthdao == null) {
 			healthdao = new healthCheckupDAO();
 		}

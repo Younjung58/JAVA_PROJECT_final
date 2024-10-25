@@ -18,6 +18,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import dao.DBdao_disease;
+import dao.DBdao_healthNormal;
+import dao.DBdao_prevent;
 import dao.diseaseDAO;
 import dao.healthNormalDAO;
 import dao.preventDiseaseDAO;
@@ -30,9 +33,9 @@ import dto.preventDiseaseDTO;
 public class resultFrame extends JFrame implements Frame_,ActionListener{
 	
 	private healthDTO healthdto = null;
-	private healthNormalDAO normal = healthNormalDAO.getInstance();
-	private diseaseDAO disease = diseaseDAO.getInstance();
-	private preventDiseaseDAO prevent = preventDiseaseDAO.getInstance();
+	private DBdao_healthNormal normal = healthNormalDAO.getInstance();
+	private DBdao_disease disease = diseaseDAO.getInstance();
+	private DBdao_prevent prevent = preventDiseaseDAO.getInstance();
 	private memberDTO memberdto = null;
 	
 	private ArrayList<String> diseaseList;

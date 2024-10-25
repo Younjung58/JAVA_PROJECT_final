@@ -10,13 +10,13 @@ import dto.memberDTO;
 		// 객체가 무한정으로 생성되는 것을 방지하고, 프로그램실행시 하나의 클래스 객체만 생성되는 것을 보장
 public class memberDAO extends oracleload implements DBdao_member{
 					// 오라클과 연동이 필요한 작업에 대한 부분을 상속받아 부모 메서드를 사용하여 진행
-	public static memberDAO memberdao = null;
+	public static DBdao_member memberdao = null;
 	
 	private memberDAO(){
 		load();
 		// 객체가 생성될 때 오라클 드라이버 로드의 과정 진행(초기 1번)
 	}
-	public static memberDAO getInstance() {
+	public static DBdao_member getInstance() {
 		if(memberdao == null) {
 			memberdao = new memberDAO();
 		}

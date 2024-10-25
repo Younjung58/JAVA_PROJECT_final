@@ -26,12 +26,13 @@ import javax.swing.SpinnerDateModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import dao.DBdao_member;
 import dao.memberDAO;
 import dto.memberDTO;
 
 public class MemberFrame extends JFrame implements Frame_, ActionListener, ChangeListener{
 										// 고정된 값이 머리글, 바닥글을 구현받음
-	memberDAO memberdao = memberDAO.getInstance();
+	DBdao_member memberdao = memberDAO.getInstance();
 	MemberFrame m = null;
 	
 	private JLabel titlesub = new JLabel(" < 회원가입 > ");

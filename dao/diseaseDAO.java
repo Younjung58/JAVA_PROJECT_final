@@ -10,13 +10,13 @@ import dto.healthDiseaseDTO;
 
 public class diseaseDAO extends oracleload implements DBdao_disease{
 	
-	public static diseaseDAO diseasedao = null;
+	public static DBdao_disease diseasedao = null;
 	
 	private diseaseDAO(){
 		load();
 		// 객체가 생성될 때 오라클 드라이버 로드의 과정 진행(초기 1번)
 	}
-	public static diseaseDAO getInstance() {
+	public static DBdao_disease getInstance() {
 		if(diseasedao == null) {
 			diseasedao = new diseaseDAO();
 		}

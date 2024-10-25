@@ -12,3 +12,4 @@ public interface DBdao_member {
 	public void update(String pw, String id);
 	public void delete(String id);
 }
+

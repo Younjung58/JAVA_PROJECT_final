@@ -9,13 +9,13 @@ import dto.healthNormalDTO;
 
 public class healthNormalDAO extends oracleload implements DBdao_healthNormal{
 	
-	public static healthNormalDAO healthnormaldao = null;
+	public static DBdao_healthNormal healthnormaldao = null;
 	
 	private healthNormalDAO(){
 		load();
 		// 객체가 생성될 때 오라클 드라이버 로드의 과정 진행(초기 1번)
 	}
-	public static healthNormalDAO getInstance() {
+	public static DBdao_healthNormal getInstance() {
 		if(healthnormaldao == null) {
 			healthnormaldao = new healthNormalDAO();
 		}
