@@ -23,5 +23,5 @@ JAVA에 대한 전체적인 학습과 Database의 연동 과정에 대한 학습
 <div>3. 코드 작성 </br>
  &nbsp;&nbsp;&nbsp; : 콜렉션 프레임 워크(ArrayList) 사용 / oracle전용의 jdbc라이브러리 사용을 통한 데이터 관리(bulid 라이브러리 사용)</br>
 
-  <h3>해당 과정을 통하여 프로젝트를 진행하고, 최종적으로 PPT를 제작하였습니다. (ppt링크 하단 첨부)</h3>
-  <h3>https://www.canva.com/design/DAGZVvxtMYA/wBKJnaE-GkslEEP4kNPlJA/edit?utm_content=DAGZVvxtMYA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton](https://www.canva.com/design/DAGUWpCtsB4/PQ8R284sE4v2WntgVi-1Bw/edit?utm_content=DAGUWpCtsB4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton</h3>
+  <h3>해당 과정을 통하여 프로젝트를 진행하고, 최종적으로 PPT를 제작하였습니다. </br> (ppt링크 하단 첨부)</h3>
+  <h5>https://www.canva.com/design/DAGZVvxtMYA/wBKJnaE-GkslEEP4kNPlJA/edit?utm_content=DAGZVvxtMYA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton](https://www.canva.com/design/DAGUWpCtsB4/PQ8R284sE4v2WntgVi-1Bw/edit?utm_content=DAGUWpCtsB4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton</h5>
