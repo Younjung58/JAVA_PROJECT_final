@@ -8,7 +8,7 @@ JAVA에 대한 전체적인 학습과 Database의 연동 과정에 대한 학습
 그에 맞는 관리를 할 수 있도록 도와줄 수 있는 프로그램을 만들어 질병 예방에 도움을 주도록 하자!
 </br></br>
 <h4>ERD를 통한 기본적인 설계 및 구상</h4>
-![ERD1](https://github.com/user-attachments/assets/86ce8a79-35a1-4c6e-b449-13c6666397a6)
+<img src="https://github.com/user-attachments/assets/86ce8a79-35a1-4c6e-b449-13c6666397a6" alt="ERD">
 
 <h4>사용한 기술 스택</h4>
 : JAVA, Eclipse, Oracle, SQLplus, ojdbc6 </br>
