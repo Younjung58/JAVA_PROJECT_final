@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://github.com/user-attachments/assets/fa45d546-5903-4208-b533-8c516b011636"></br></br>
+<img src="https://github.com/user-attachments/assets/23f625af-390a-4948-a725-57e96a81cd9a"></br></br>
 JAVA, Oracle을 통한 객체지향 언어의 이해와 데이터베이스 연동을 기반으로한 JAVA Final 프로젝트</br>
 <h3>"나의 건강 지킴이!"</h3>
 </div>
