@@ -41,7 +41,7 @@ JAVA, Oracle을 통한 객체지향 언어의 이해와 데이터베이스 연�
  &nbsp;&nbsp;&nbsp; : 콜렉션 프레임 워크(ArrayList) 사용 / oracle전용의 jdbc라이브러리 사용을 통한 데이터 관리(bulid 라이브러리 사용)</br>
 <hr>
 <h3> 📼 3. 실제 구현 영상 </h3>
-<p dir="auto">기능별 미리보기 영상입니다. 자세한 영상과 설명 시청은 하단의 최종 영상 링크를 통하여 확인 가능합니다.</p>
+<p dir="auto">기능별 미리보기 영상입니다. 자세한 영상과 설명 시청은 하단의 <b>"최종 영상 링크"</b>를 통하여 확인 가능합니다.</p>
 <markdown-accessiblity-table data-catalyst=""><table>
 <thead>
 <tr>
@@ -59,6 +59,21 @@ JAVA, Oracle을 통한 객체지향 언어의 이해와 데이터베이스 연�
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
+<markdown-accessiblity-table data-catalyst=""><table>
+<thead>
+<tr>
+<th align="center">검진등록 기능</th>
+<th align="center">결과보기 기능</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://github.com/user-attachments/assets/fbcfccc2-2642-415d-9db1-674f22840b5c"></td>
+<td><img src="https://github.com/user-attachments/assets/71a24811-56cb-4aea-a69b-cd87d5084958"></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+
 <hr>
   <h3>📜 4. 해당 과정을 통하여 프로젝트를 진행하고, 최종적으로 PPT를 제작하였습니다. </br> (ppt링크 하단 첨부)</h3>
   <h5>https://www.canva.com/design/DAGUWpCtsB4/PQ8R284sE4v2WntgVi-1Bw/edit?utm_content=DAGUWpCtsB4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton</h5>
