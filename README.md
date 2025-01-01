@@ -52,10 +52,10 @@ JAVA, Oracle을 통한 객체지향 언어의 이해와 데이터베이스 연�
 </thead>
 <tbody>
 <tr>
-<td><img src="https://github.com/user-attachments/assets/2e6cd813-a018-46a0-a1a4-ab51325136aa">
+<td><img src="https://github.com/user-attachments/assets/2e4174dd-9120-4a6f-b9b1-8ab93c4fa950">
 </td>
-<td><img src="https://github.com/user-attachments/assets/5294b9fb-3934-4d3b-b4d5-18a884bab21b"></td>
-<td><img src="https://github.com/user-attachments/assets/8412140c-8be4-4d80-adb5-a882df7db6ec"></td>
+<td><img src="https://github.com/user-attachments/assets/6c9157ae-3fea-4ccb-8a72-d2d897050fe0"></td>
+<td><img src="https://github.com/user-attachments/assets/09518fe6-734c-4fa6-a554-cf2d67f238c9"></td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
