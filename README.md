@@ -24,7 +24,7 @@ JAVA, Oracle을 통한 객체지향 언어의 이해와 데이터베이스 연�
 </div>
 </br>
 <hr>
-<h3>👩🏻‍⚕ 2. 주요 기능 및 설계</h3>
+<h3>👩🏻‍⚕ 2. 주요 설계 및 사용 기술</h3>
 <h4>(1) ERD를 통한 기본적인 설계 및 구상</h4>
 <img src="https://github.com/user-attachments/assets/86ce8a79-35a1-4c6e-b449-13c6666397a6" alt="ERD">
 
@@ -40,5 +40,25 @@ JAVA, Oracle을 통한 객체지향 언어의 이해와 데이터베이스 연�
 <div>3. 코드 작성 </br>
  &nbsp;&nbsp;&nbsp; : 콜렉션 프레임 워크(ArrayList) 사용 / oracle전용의 jdbc라이브러리 사용을 통한 데이터 관리(bulid 라이브러리 사용)</br>
 <hr>
-  <h3>📜 3. 해당 과정을 통하여 프로젝트를 진행하고, 최종적으로 PPT를 제작하였습니다. </br> (ppt링크 하단 첨부)</h3>
+<h3> 📼 3. 실제 구현 영상 </h3>
+<p dir="auto">기능별 미리보기 영상입니다. 자세한 영상과 설명 시청은 하단의 최종 영상 링크를 통하여 확인 가능합니다.</p>
+<markdown-accessiblity-table data-catalyst=""><table>
+<thead>
+<tr>
+<th align="center">회원가입 기능</th>
+<th align="center">로그인 기능</th>
+<th align="center">비밀번호변경 기능</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://github.com/user-attachments/assets/2e6cd813-a018-46a0-a1a4-ab51325136aa">
+</td>
+<td><img src="https://github.com/user-attachments/assets/5294b9fb-3934-4d3b-b4d5-18a884bab21b"></td>
+<td><img src="https://github.com/user-attachments/assets/8412140c-8be4-4d80-adb5-a882df7db6ec"></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+  <h3>📜 4. 해당 과정을 통하여 프로젝트를 진행하고, 최종적으로 PPT를 제작하였습니다. </br> (ppt링크 하단 첨부)</h3>
   <h5>https://www.canva.com/design/DAGUWpCtsB4/PQ8R284sE4v2WntgVi-1Bw/edit?utm_content=DAGUWpCtsB4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton</h5>
