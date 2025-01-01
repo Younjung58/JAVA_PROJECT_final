@@ -73,7 +73,7 @@ JAVA, Oracle을 통한 객체지향 언어의 이해와 데이터베이스 연�
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-
+<h3>👉👉<a href="http://naver.me/FG7A1HMW">"나의 건강지킴이" 기능 종합 버전 영상 및 설명 보러가기!!</a></h3>
 <hr>
   <h3>📜 4. 해당 과정을 통하여 프로젝트를 진행하고, 최종적으로 PPT를 제작하였습니다. </br> (ppt링크 하단 첨부)</h3>
   <h5>https://www.canva.com/design/DAGUWpCtsB4/PQ8R284sE4v2WntgVi-1Bw/edit?utm_content=DAGUWpCtsB4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton</h5>
